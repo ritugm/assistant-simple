@@ -1,0 +1,949 @@
+{
+  "intents": [
+    {
+      "intent": "dispute_order",
+      "examples": [
+        {
+          "text": "complaint"
+        },
+        {
+          "text": "Dispute Order"
+        },
+        {
+          "text": "I have an order problem"
+        },
+        {
+          "text": "I need to dispute an order"
+        },
+        {
+          "text": "I need to submit a claim"
+        },
+        {
+          "text": "I need to submit a dispute"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "employee_benefits",
+      "examples": [
+        {
+          "text": "Employee benefits"
+        },
+        {
+          "text": "employment package plan"
+        },
+        {
+          "text": "I need to know my benefits"
+        },
+        {
+          "text": "What are my benefits"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "health_insurance",
+      "examples": [
+        {
+          "text": "health"
+        },
+        {
+          "text": "insurance"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "online_account_support",
+      "examples": [
+        {
+          "text": "account help"
+        },
+        {
+          "text": "customer profile support"
+        },
+        {
+          "text": "help with account"
+        },
+        {
+          "text": "online account support"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "paid_time_off",
+      "examples": [
+        {
+          "text": "leave of absence"
+        },
+        {
+          "text": "paid time off"
+        },
+        {
+          "text": "paternity leave"
+        },
+        {
+          "text": "sick time"
+        },
+        {
+          "text": "vacation time"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "password_reset",
+      "examples": [
+        {
+          "text": "log in help"
+        },
+        {
+          "text": "password reset"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "profile_update",
+      "examples": [
+        {
+          "text": "change contact information"
+        },
+        {
+          "text": "profile update"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "retirement",
+      "examples": [
+        {
+          "text": "401k"
+        },
+        {
+          "text": "403b"
+        },
+        {
+          "text": "investing"
+        },
+        {
+          "text": "retirement"
+        },
+        {
+          "text": "saving"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "wellness",
+      "examples": [
+        {
+          "text": "therapy"
+        },
+        {
+          "text": "wellness"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "account_number",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "AC9876",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "ACT 98765",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "ACT98765",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "invoice_number",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "IN 12345",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "IN12345",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "pin",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "1234",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "7777",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-currency",
+      "values": [],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-date",
+      "values": [],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-percentage",
+      "values": [],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-time",
+      "values": [],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "total_due",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "$1000",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "$500.50",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "1954.31",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "username",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "jjepperson",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "mgeiser",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "I didn't get your meaning."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_1_1604353043383",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Please provide your username"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_5_1604352803441",
+      "event_name": "focus",
+      "dialog_node": "handler_1_1604352803452",
+      "previous_sibling": "handler_9_1604352803452"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Please enter your pin"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_6_1604352821587",
+      "event_name": "focus",
+      "dialog_node": "handler_1_1604352821587",
+      "previous_sibling": "handler_7_1604352821587"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Please enter your invoice amount due"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_3_1604076455527",
+      "event_name": "focus",
+      "dialog_node": "handler_3_1604076455529",
+      "previous_sibling": "handler_6_1604076455529"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_2_1604353043385",
+      "context": {
+        "username": "@username"
+      },
+      "conditions": "@username",
+      "event_name": "input",
+      "dialog_node": "handler_3_1604353043385"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Please provide your username"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_2_1604353043385",
+      "event_name": "focus",
+      "dialog_node": "handler_4_1604353043385",
+      "previous_sibling": "handler_3_1604353043385"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_4_1604076129292",
+      "context": {
+        "account_number": "@account_number"
+      },
+      "conditions": "@account_number",
+      "event_name": "input",
+      "dialog_node": "handler_5_1604076129307"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_3_1604076455527",
+      "context": {
+        "invoiceAmountDue": "@sys-currency"
+      },
+      "conditions": "@sys-currency",
+      "event_name": "input",
+      "dialog_node": "handler_6_1604076455529"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_5_1604353043385",
+      "context": {
+        "pin": "@pin"
+      },
+      "conditions": "@pin",
+      "event_name": "input",
+      "dialog_node": "handler_6_1604353043385"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_6_1604352821587",
+      "context": {
+        "pin": "@pin"
+      },
+      "conditions": "@pin",
+      "event_name": "input",
+      "dialog_node": "handler_7_1604352821587"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Please enter your pin"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_5_1604353043385",
+      "event_name": "focus",
+      "dialog_node": "handler_7_1604353043385",
+      "previous_sibling": "handler_6_1604353043385"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Please enter your invoice number"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_5_1604076245900",
+      "event_name": "focus",
+      "dialog_node": "handler_8_1604076245903",
+      "previous_sibling": "handler_9_1604076245903"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Please enter your account number"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_4_1604076129292",
+      "event_name": "focus",
+      "dialog_node": "handler_9_1604076129307",
+      "previous_sibling": "handler_5_1604076129307"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_5_1604076245900",
+      "context": {
+        "invoice_number": "@invoice_number"
+      },
+      "conditions": "@invoice_number",
+      "event_name": "input",
+      "dialog_node": "handler_9_1604076245903"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_5_1604352803441",
+      "context": {
+        "username": "@username"
+      },
+      "conditions": "@username",
+      "event_name": "input",
+      "dialog_node": "handler_9_1604352803452"
+    },
+    {
+      "type": "frame",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Okay, let's get your invoice corrected. Please upload the invoice to submit your dispute <input type=\"file\" accepts=\"pdf/*\"/>"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "Once uploaded, please confirm."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#dispute_order",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_10_1604075674343",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Great choice. The sooner you plan for retirement the better. Your most recent account activity was on October 27, 2020."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "You can access your account, review matching programs and update contributions <a href=\"https://www.ibm.com/automation/software\" target=\"_blank\">here</a> "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#retirement",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_10_1604347227798",
+      "previous_sibling": "node_4_1604347137921"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Thank you. Your invoice has been validated and a dispute was submitted. Your confirmation number is 96532957."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "user_input",
+        "dialog_node": "node_10_1604075674343"
+      },
+      "conditions": "$invoiceAmountDue",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_1_1604077117627",
+      "previous_sibling": "node_10_1604075674343"
+    },
+    {
+      "type": "frame",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Thank you. We want your account to be as secure as possible. "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "To review and update your account profile, as well as set notification preference and other settings, click  <a href=\"https://www.ibm.com/automation/software\" target=\"_blank\">here</a> "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#profile_update",
+      "dialog_node": "node_1_1604353043383",
+      "previous_sibling": "node_4_1604348087619"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I'm here to help resolve your online account issues. "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "title": "Account Support",
+            "options": [
+              {
+                "label": "Password Reset",
+                "value": {
+                  "input": {
+                    "text": "Password Reset"
+                  }
+                }
+              },
+              {
+                "label": "Profile Update",
+                "value": {
+                  "input": {
+                    "text": "Profile Update"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "conditions": "#online_account_support",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_2_1604075795047",
+      "previous_sibling": "node_8_1604347444965"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "You deserve a vacation. You have 12 vacation days and 6 sick days remaining in your 2020 paid time off. "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "For more information on paid time-off, visit our HR website <a href=\"https://www.ibm.com/automation/software\" target=\"_blank\">here</a> "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#paid_time_off",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_4_1604347137921",
+      "previous_sibling": "node_6_1604346848755"
+    },
+    {
+      "type": "frame",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Thank you. We want your account to be as secure as possible. A temporary password and link to reset has been sent to your contact number on file. You are all set."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#password_reset",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_4_1604348087619",
+      "previous_sibling": "node_2_1604075795047"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Let's chat benefits. Select from the options below and we will jump right in."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "title": "Benefits",
+            "options": [
+              {
+                "label": "Health & Insurance",
+                "value": {
+                  "input": {
+                    "text": "Health & Insurance"
+                  }
+                }
+              },
+              {
+                "label": "Paid Time-Off",
+                "value": {
+                  "input": {
+                    "text": "Paid Time-Off"
+                  }
+                }
+              },
+              {
+                "label": "Wellness",
+                "value": {
+                  "input": {
+                    "text": "Wellness"
+                  }
+                }
+              },
+              {
+                "label": "Retirement",
+                "value": {
+                  "input": {
+                    "text": "Retirement"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "conditions": "#employee_benefits",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_5_1604075781304",
+      "previous_sibling": "node_1_1604077117627"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Make sure your health insurance and medical benefits fit your needs."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "Click <a href=\"https://www.ibm.com/automation/software\" target=\"_blank\">here</a> to review your enrollment."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#health_insurance",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_6_1604346848755",
+      "previous_sibling": "node_5_1604075781304"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "It is important to stay mentally and physically well. You have earned level 3 for your wellness activity in 2020."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "Your wellness benefits can be found <a href=\"https://www.ibm.com/automation/software\" target=\"_blank\">here</a> "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#wellness",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_8_1604347444965",
+      "previous_sibling": "node_10_1604347227798"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_1_1604353043383",
+      "variable": "$username",
+      "dialog_node": "slot_2_1604353043385"
+    },
+    {
+      "type": "slot",
+      "parent": "node_10_1604075674343",
+      "variable": "$invoiceAmountDue",
+      "dialog_node": "slot_3_1604076455527",
+      "previous_sibling": "slot_5_1604076245900"
+    },
+    {
+      "type": "slot",
+      "parent": "node_10_1604075674343",
+      "variable": "$account_number",
+      "dialog_node": "slot_4_1604076129292"
+    },
+    {
+      "type": "slot",
+      "parent": "node_10_1604075674343",
+      "variable": "$invoice_number",
+      "dialog_node": "slot_5_1604076245900",
+      "previous_sibling": "slot_4_1604076129292"
+    },
+    {
+      "type": "slot",
+      "parent": "node_4_1604348087619",
+      "variable": "$username",
+      "dialog_node": "slot_5_1604352803441"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_1_1604353043383",
+      "variable": "$pin",
+      "dialog_node": "slot_5_1604353043385",
+      "previous_sibling": "slot_2_1604353043385"
+    },
+    {
+      "type": "slot",
+      "parent": "node_4_1604348087619",
+      "variable": "$pin",
+      "dialog_node": "slot_6_1604352821587",
+      "previous_sibling": "slot_5_1604352803441"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "source": "https://www.ibm.com/design/language/ab9936fcbc48b33beb969671629e07be/rebusclassic1.svg",
+            "response_type": "image"
+          },
+          {
+            "values": [
+              {
+                "text": "Hello, my name is Agent Cary. "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "Here are a few common requests I can assist with: Employee Benefits, Account Support and Disputing an Order. Also, if you have any questions regarding COVID-19, I can provide answers."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "title": "How can I help you?",
+            "options": [
+              {
+                "label": "Employee Benefits",
+                "value": {
+                  "input": {
+                    "text": "Employee Benefits"
+                  }
+                }
+              },
+              {
+                "label": "Account Support",
+                "value": {
+                  "input": {
+                    "text": "Account Support"
+                  }
+                }
+              },
+              {
+                "label": "Dispute an Order",
+                "value": {
+                  "input": {
+                    "text": "Dispute an Order"
+                  }
+                }
+              },
+              {
+                "label": "Covid-19",
+                "value": {
+                  "input": {
+                    "text": "Covid-19"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "off_topic": {
+      "enabled": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "system_entities": {
+      "enabled": true
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "Customer Support",
+  "language": "en",
+  "description": ""
+}
